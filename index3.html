@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="CSS/login.css">
+</head>
+<body>
+<div class="welcome">
+	<h1>WELCOME <span style="color: gold;" id="welcomePerson">DEJI</span></h1>
+</div>
+<table>
+	<tbody>
+		<tr>
+			<td>id</td>
+			<td id="empty-id"></td>
+		</tr>
+		<tr>
+			<td>email</td>
+			<td id="empty-email"></td>
+		</tr>
+		<tr>
+			<td>full name</td>
+			<td id="empty-name"></td>
+		</tr>
+	</tbody>
+</table>
+<script type="text/javascript">
+	const search = window.location.search;
+	const userId = search.substring(search.indexOf("=") +1);
+	async function anything() {
+		const request = await fetch('http://localhost:3000/users/' + userId, {
+			method: "GET",
+			headers: {
+				"Content-type": 'application/json'
+			},
+		});
+		const data = await request.json();
+		if (userId === "") {
+			history.back();
+		}
+		const personName = data.name.substring(0,data.name.indexOf(" "));
+		document.querySelector("#empty-id").innerHTML = data.id;
+		document.querySelector("#empty-email").innerHTML = data.email;
+		document.querySelector("#empty-name").innerHTML = data.name;
+		document.querySelector("#welcomePerson").innerHTML = personName;
+ 	}
+ 	anything();
+</script>
+</body>
+</html>

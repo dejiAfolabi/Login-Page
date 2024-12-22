@@ -1,0 +1,41 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+#toast {
+	background-color: lightgreen;
+	border: 2px solid darkgreen;
+	color: darkgreen;
+	width: 250px;
+	top: 15px;
+	right: 7px;
+	position: fixed;
+	padding: 5px 15px;
+	display: none;
+}
+
+#toast.error {
+	background-color: pink;
+	border: 2px solid darkred;
+	color: darkred;
+}
+
+.font-awesome {
+	display: inline-block;
+	width: 12px;
+	height: 10px;
+}
+
+#positionOf {
+	top: 7px;
+	right: 10px;
+	position: absolute;
+	cursor: pointer;
+	color: grey;
+}
+
+#positionOf:hover {
+	color: black;
+}
